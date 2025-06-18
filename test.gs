@@ -12,11 +12,11 @@ function createAllTestRoster(){
   const NUM_TEST_CASE = 26;
 
   for(let i = 1; i< NUM_TEST_CASE; i++){
-    createRosterSheet(i+1);
+    createTestRosterSheet(i+1);
   }
 }
 
-function createRosterSheet(testNum){
+function createTestRosterSheet(testNum){
     
     const testCaseSheetRow = testNum + 2;
 

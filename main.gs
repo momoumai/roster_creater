@@ -24,9 +24,18 @@ function createRosterSheet(){
 
   const dutyCellList = createrSheet.getRange(3, 5, numDuty, 1).getValues().map(value => new Cell(value[0]));
 
-  const numNoDutyDate = createrSheet.getRange("F2").getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow() - 2;
+  // const numNoDutyDate = createrSheet.getRange("F1").getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow() - 2;
 
-  const noDutyDateList = createrSheet.getRange(3, 6, numNoDutyDate, 1).getValues().map(value => value[0]);
+  const noDutyDateList = new Array();
+  
+  for(let row = 3; ;row++){
+    const value = createrSheet.getRange(row, 6).getValue();
+    
+    if(value === "") break;
+
+    noDutyDateList.push(value);
+  }
+
 
   // 予定表シート
   const scheduleSheet = spreadSheet.getSheetByName(`【予定表】${date.getMonth() + 1}月`);

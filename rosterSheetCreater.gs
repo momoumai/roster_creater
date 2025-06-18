@@ -98,10 +98,12 @@ class RosterSheetCreater {
     const month = this.date.getMonth();
 
     let dateToDutyRequireMap = new Map(new Array(lastDate).fill(0).map((_,index) => [new Date(year, month, index+1).toDateString(), true]));
-    
-    this.noDutyDateList.forEach(date => {
-      dateToDutyRequireMap.set(date.toDateString(), false);
-    });
+
+    if(this.noDutyDateList.length > 0){
+      this.noDutyDateList.forEach(date => {
+        dateToDutyRequireMap.set(date.toDateString(), false);
+      });
+    }
 
     return dateToDutyRequireMap;
   }
