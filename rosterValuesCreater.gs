@@ -3,7 +3,6 @@ class RosterValuesCreater{
   // 当番表の値を作成するクラス
   
   constructor(dutyList, dutyUserList, shouldAssignDutysInOrder, dateToUserPresentMap, dateToDutyRequireMap, isFullDayDuty){
-    
     this.dutyList = dutyList;
     this.numDuties = dutyList.length;
     this.numDayDutyUsers = isFullDayDuty ? this.numDuties : this.numDuties * NUM_TIMEFRAMES;
@@ -20,6 +19,7 @@ class RosterValuesCreater{
     this.noDutyDateCellList = new Array();
   }
 
+  // 当番表の値を作成する
   createRosterValues(){
 
     let rosterValueList = new Array(NUM_WEEKDAYS * NUM_WEEKS);
@@ -28,6 +28,7 @@ class RosterValuesCreater{
     let firstWeekOfDay = this.dateToUserPresentMap.keys().next().value.getDay(); // 0(日曜)~6(土曜)
     let rosterValueListIndex = Math.max(0, firstWeekOfDay % 6 - 1);
 
+    // 日ごとに当番を割り当てる
     this.dateToUserPresentMap.forEach((isUserPresentMap, date) => {
 
       let dayDutyUserList = new Array();
@@ -114,7 +115,7 @@ class RosterValuesCreater{
     return dayDutyUserList;
   }
 
-  // 割り当てられない場合は-1を返す
+  // 割り当てられた当番のIDを、割り当てられない場合は-1を返す
   getAssignDutyId(dutyUser, dayDutyUserList){
 
     let assignDutyId = -1;
@@ -144,7 +145,7 @@ class RosterValuesCreater{
     return assignDutyId;
   }
 
-  // 利用者が指定範囲すべて出席しているか判定
+  // 利用者が指定範囲すべて出席しているか判定する
   isPresent(firstRow, numOfRow, isUserPresentList){
     for(let i = firstRow; i < numOfRow + firstRow; i++){
       if(!isUserPresentList[i]) return false;

@@ -20,22 +20,19 @@ function createRosterSheet(){
 
   const isFullDayDuty = !(createrSheet.getRange("C6").getValue());
 
+  // 当番数
   const numDuty = createrSheet.getRange("E2").getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow() - 2;
 
+  // 当番名のセルの配列
   const dutyCellList = createrSheet.getRange(3, 5, numDuty, 1).getValues().map(value => new Cell(value[0]));
 
-  // const numNoDutyDate = createrSheet.getRange("F1").getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow() - 2;
-
-  const noDutyDateList = new Array();
-  
+  //当番が必要ない日の配列を作成 
+  let noDutyDateList = new Array();
   for(let row = 3; ;row++){
     const value = createrSheet.getRange(row, 6).getValue();
-    
     if(value === "") break;
-
     noDutyDateList.push(value);
   }
-
 
   // 予定表シート
   const scheduleSheet = spreadSheet.getSheetByName(`【予定表】${date.getMonth() + 1}月`);

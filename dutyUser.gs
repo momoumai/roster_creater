@@ -1,5 +1,7 @@
 class DutyUser{
 
+  // いずれかの当番を担当できるユーザーを扱うクラス
+
   // 利用者id(メンバー一覧シートの並び順)、利用者名、担当可能な当番のリストをメンバ変数に持つ
   constructor(userId, userName, dutyList){
     this.userId = userId;

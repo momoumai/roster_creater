@@ -61,6 +61,7 @@ class RosterSheetCreater {
     rosterSheet.setName(rosterName);
   }
 
+  // 当番(当番の名前と、利用者の当番可能フラグ)の配列を作成
   getDutyList(dutyCellList){
     return dutyCellList.map((cell) => {
       const dutyName = cell.getValue(this.userListSheet);
@@ -80,6 +81,7 @@ class RosterSheetCreater {
     return this.dutyUserListBuilder;
   }
 
+  // テンプレートシートのコピーを作成
   copyTemplateSheet(templateSheetName){
     const templateSheet = this.spreadSheet.getSheetByName(templateSheetName);
     return templateSheet.copyTo(this.spreadSheet);
@@ -186,7 +188,7 @@ class RosterSheetCreater {
     return new Map(entries);
   }
 
- // 利用者が出席しているか判定
+  // 利用者が出席しているか判定
   isUserPresent(str){
     return str === "通所";
   }

@@ -1,8 +1,11 @@
 const NUM_TIMEFRAMES = 2; // 午前・午後の二つ
 
+// 曜日の数
 const NUM_WEEKDAYS = 5;
+// 週の数
 const NUM_WEEKS = 5;
 
+// 当番表の、当番の必要ない日のセル背景に設定する色
 const NO_DUTY_DATE_COLOR = "#a8a8a8";
 
 const scriptProperties = PropertiesService.getScriptProperties();

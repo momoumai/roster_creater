@@ -10,6 +10,7 @@ class DutyUserListBuilder{
     this.dutyUserNameList = this.dutyUserIdList.map(userId => this.userNameList[userId]);
   }
 
+  // 当番を行う利用者のリストを作成
   createDutyUserList(){
 
     let dutyUserList = this.dutyUserIdList.map((userId, index) => 
@@ -20,7 +21,7 @@ class DutyUserListBuilder{
     return this.shuffleArray(dutyUserList); 
   }
 
-  // 利用者ごとの担当が可能な当番のリスト
+  // 利用者ごとの担当が可能な当番のリストを作成
   createUsersDutyList(userId, userIndex){
 
     let usersDutyList = new Array();
@@ -60,6 +61,7 @@ class DutyUserListBuilder{
     return false;
   }
 
+  // 毎月同じ順番にならないように、配列をシャッフルする
   shuffleArray(originalArray){  
     let shuffledArray = new Array();
 
